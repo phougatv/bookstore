@@ -62,5 +62,19 @@
 
             return Ok(message);
         }
+
+        /// <summary>
+        /// Deletes the <see cref="Book"/> based on the id.
+        /// </summary>
+        /// <param name="id">The id <see cref="Guid"/>.</param>
+        /// <returns></returns>
+        [HttpDelete("{id:guid}")]
+        public IActionResult Delete(Guid id)
+        {
+            var isDeleted = _service.Delete(id);
+            var message = isDeleted ? "Record deleted successfully" : "Failed to delete";
+
+            return Ok(message);
+        }
     }
 }

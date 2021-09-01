@@ -53,5 +53,18 @@ namespace Atlantis.Books
 
             return isStateUpdated && stateEntries == 1;
         }
+
+        /// <summary>
+        /// Deletes the record.
+        /// </summary>
+        /// <param name="id">The id <see cref="Guid"/>.</param>
+        /// <returns></returns>
+        public bool Delete(Guid id)
+        {
+            var isStateDeleted = _repository.Delete(id);
+            var stateEntries = _dbContext.SaveChanges();
+
+            return isStateDeleted && stateEntries == 1;
+        }
     }
 }

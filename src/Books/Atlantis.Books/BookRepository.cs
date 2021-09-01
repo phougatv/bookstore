@@ -52,6 +52,21 @@
 
             return entityEntry.State == EntityState.Modified;
         }
+
+        /// <summary>
+        /// Permanently deletes the record.
+        /// </summary>
+        /// <param name="id">The id <see cref="Guid"/>.</param>
+        /// <returns></returns>
+        public bool Delete(Guid id)
+        {
+            var book = InternalReadById(id);
+            if (book == null)
+                return false;
+
+            var entityEntry = _dbContext.Books.Remove(book);
+            return entityEntry.State == EntityState.Deleted;
+        }
         #endregion Internal Methods
 
         #region Private Methods
