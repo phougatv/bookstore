@@ -1,4 +1,6 @@
-﻿namespace Atlantis.Books
+﻿using System;
+
+namespace Atlantis.Books
 {
     /// <summary>
     /// BookService class.
@@ -19,12 +21,24 @@
             _repository = repository;
         }
 
-        public bool Created(Book book)
+        /// <summary>
+        /// Creates a book.
+        /// </summary>
+        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <returns></returns>
+        public bool Create(Book book)
         {
             var isStateAdded = _repository.Create(book);
             var stateEntries = _dbContext.SaveChanges();
 
             return isStateAdded && stateEntries == 1;   // Only 1 row should be created in single scope.
         }
+
+        /// <summary>
+        /// Reads a <see cref="Book"/> based on the id.
+        /// </summary>
+        /// <param name="id">The id <see cref="Guid"/>.</param>
+        /// <returns></returns>
+        public Book Read(Guid id) => _repository.Read(id);
     }
 }

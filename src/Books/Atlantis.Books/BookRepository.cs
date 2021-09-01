@@ -1,6 +1,8 @@
 ﻿namespace Atlantis.Books
 {
     using Microsoft.EntityFrameworkCore;
+    using System;
+    using System.Linq;
 
     /// <summary>
     /// BookRepository class.
@@ -29,5 +31,21 @@
             var entityEntry = _dbContext.Books.Add(book);
             return entityEntry.State == EntityState.Added;
         }
+
+        /// <summary>
+        /// Returns an null or instance of <see cref="Book"/>, if id (<see cref="Guid"/>) exists.
+        /// </summary>
+        /// <param name="id">The id <see cref="Guid"/>.</param>
+        /// <returns></returns>
+        internal Book Read(Guid id) => InternalReadById(id);
+
+        #region Private Methods
+        /// <summary>
+        /// Retrieves the <see cref="Book"/> based on id (<see cref="Guid"/>).
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private Book InternalReadById(Guid id) => _dbContext.Books.FirstOrDefault(book => book.Id == id);
+        #endregion Private Methods
     }
 }
