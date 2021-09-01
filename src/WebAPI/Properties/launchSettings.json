@@ -18,6 +18,7 @@
     "WebAPI": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
+      "launchUrl": "swagger", // This will set the app start url ot -> applicationUrl/launchUrl
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
