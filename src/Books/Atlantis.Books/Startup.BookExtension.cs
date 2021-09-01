@@ -1,5 +1,7 @@
 ﻿namespace Atlantis.Books
 {
+    using Atlantis.Books.Abstractions;
+    using Atlantis.Books.Concretes;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -14,7 +16,7 @@
             });
 
             services.AddScoped<BookService>();
-            services.AddScoped<BookRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
 
             return services;
         }

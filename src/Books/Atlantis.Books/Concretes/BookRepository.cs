@@ -1,5 +1,6 @@
-﻿namespace Atlantis.Books
+﻿namespace Atlantis.Books.Concretes
 {
+    using Atlantis.Books.Abstractions;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Linq;
@@ -7,7 +8,7 @@
     /// <summary>
     /// BookRepository class.
     /// </summary>
-    public class BookRepository
+    class BookRepository : IBookRepository
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -27,7 +28,7 @@
         /// </summary>
         /// <param name="book">The book <see cref="Book"/>.</param>
         /// <returns></returns>
-        internal bool Create(Book book)
+        bool IRepository<Book>.Create(Book book)
         {
             var entityEntry = _dbContext.Books.Add(book);
             return entityEntry.State == EntityState.Added;
@@ -38,14 +39,14 @@
         /// </summary>
         /// <param name="id">The id <see cref="Guid"/>.</param>
         /// <returns></returns>
-        internal Book Read(Guid id) => InternalReadById(id);
+        Book IRepository<Book>.Read(Guid id) => InternalReadById(id);
 
         /// <summary>
         /// Updates book based on the id (<see cref="Guid"/>).
         /// </summary>
         /// <param name="book">The book <see cref="Book"/>.</param>
         /// <returns></returns>
-        internal bool Update(Book book)
+        bool IRepository<Book>.Update(Book book)
         {
             var entityEntry = _dbContext.Attach(book);
             entityEntry.State = EntityState.Modified;
@@ -58,7 +59,7 @@
         /// </summary>
         /// <param name="id">The id <see cref="Guid"/>.</param>
         /// <returns></returns>
-        public bool Delete(Guid id)
+        bool IRepository<Book>.Delete(Guid id)
         {
             var book = InternalReadById(id);
             if (book == null)

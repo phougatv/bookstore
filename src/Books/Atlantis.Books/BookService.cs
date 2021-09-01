@@ -1,21 +1,22 @@
-﻿using System;
-
-namespace Atlantis.Books
+﻿namespace Atlantis.Books
 {
+    using Atlantis.Books.Abstractions;
+    using System;
+
     /// <summary>
     /// BookService class.
     /// </summary>
     public class BookService
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly BookRepository _repository;
+        private readonly IBookRepository _repository;
 
         /// <summary>
         /// Creates an instance of <see cref="BookService"/>.
         /// </summary>
         /// <param name="dbContext">The db context <see cref="ApplicationDbContext"/>.</param>
         /// <param name="repository">The repository <see cref="BookRepository"/>.</param>
-        public BookService(ApplicationDbContext dbContext, BookRepository repository)
+        public BookService(ApplicationDbContext dbContext, IBookRepository repository)
         {
             _dbContext = dbContext;
             _repository = repository;
