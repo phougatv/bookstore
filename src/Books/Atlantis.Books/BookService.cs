@@ -40,5 +40,18 @@ namespace Atlantis.Books
         /// <param name="id">The id <see cref="Guid"/>.</param>
         /// <returns></returns>
         public Book Read(Guid id) => _repository.Read(id);
+
+        /// <summary>
+        /// Updates book.
+        /// </summary>
+        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <returns></returns>
+        public bool Update(Book book)
+        {
+            var isStateUpdated = _repository.Update(book);
+            var stateEntries = _dbContext.SaveChanges();
+
+            return isStateUpdated && stateEntries == 1;
+        }
     }
 }

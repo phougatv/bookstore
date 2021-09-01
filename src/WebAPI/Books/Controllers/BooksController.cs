@@ -41,12 +41,26 @@
         /// </summary>
         /// <param name="id">The id <see cref="Guid"/>.</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("{id:guid}")]
         public IActionResult Read(Guid id)
         {
             var book = _service.Read(id);
 
             return Ok(book);
+        }
+
+        /// <summary>
+        /// Updates the book based on id <see cref="Guid"/>.
+        /// </summary>
+        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult Update(Book book)
+        {
+            var isUpdated = _service.Update(book);
+            var message = isUpdated ? "Record updated successfully" : "Failed to update";
+
+            return Ok(message);
         }
     }
 }

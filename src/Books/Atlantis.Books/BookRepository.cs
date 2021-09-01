@@ -20,6 +20,7 @@
             _dbContext = dbContext;
         }
 
+        #region Internal Methods
         /// <summary>
         /// Returns true on adding the book to the db set and setting the state of entity entry to added.
         /// SaveChanges is the one that actually performs the changes in the DB.
@@ -38,6 +39,20 @@
         /// <param name="id">The id <see cref="Guid"/>.</param>
         /// <returns></returns>
         internal Book Read(Guid id) => InternalReadById(id);
+
+        /// <summary>
+        /// Updates book based on the id (<see cref="Guid"/>).
+        /// </summary>
+        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <returns></returns>
+        internal bool Update(Book book)
+        {
+            var entityEntry = _dbContext.Attach(book);
+            entityEntry.State = EntityState.Modified;
+
+            return entityEntry.State == EntityState.Modified;
+        }
+        #endregion Internal Methods
 
         #region Private Methods
         /// <summary>
