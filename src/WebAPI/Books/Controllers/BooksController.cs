@@ -1,6 +1,7 @@
 ﻿namespace WebAPI.Books.Controllers
 {
     using Atlantis.Books;
+    using Atlantis.Books.Abstractions;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using static Microsoft.AspNetCore.Http.StatusCodes;
@@ -12,13 +13,13 @@
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly BookService _service;
+        private readonly IBookService _service;
 
         /// <summary>
         /// Ctor creates an instance of <see cref="BooksController"/>.
         /// </summary>
         /// <param name="service">The service <see cref="BookService"/>.</param>
-        public BooksController(BookService service)
+        public BooksController(IBookService service)
         {
             _service = service;
         }

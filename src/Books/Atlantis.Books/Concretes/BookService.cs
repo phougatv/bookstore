@@ -1,4 +1,4 @@
-﻿namespace Atlantis.Books
+﻿namespace Atlantis.Books.Concretes
 {
     using Atlantis.Books.Abstractions;
     using System;
@@ -6,7 +6,7 @@
     /// <summary>
     /// BookService class.
     /// </summary>
-    public class BookService
+    class BookService : IBookService
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IBookRepository _repository;
