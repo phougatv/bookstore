@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Atlantis.Books
+﻿namespace Atlantis.Books.Persistence
 {
+    using Atlantis.Books.Persistence.Pocos;
+    using Microsoft.EntityFrameworkCore;
+
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContextOptions)
             : base(dbContextOptions)
         {
-            
+
         }
 
         /// <summary>

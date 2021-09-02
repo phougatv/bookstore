@@ -1,6 +1,8 @@
-﻿namespace Atlantis.Books.Concretes
+﻿namespace Atlantis.Books.Business
 {
-    using Atlantis.Books.Abstractions;
+    using Atlantis.Books.Dtos;
+    using Atlantis.Books.Persistence;
+    using Atlantis.Books.Persistence.Pocos;
     using System;
 
     /// <summary>
@@ -25,10 +27,17 @@
         /// <summary>
         /// Creates a book.
         /// </summary>
-        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <param name="bookDto">The book dto <see cref="BookDto"/>.</param>
         /// <returns></returns>
-        public bool Create(Book book)
+        public bool Create(BookDto bookDto)
         {
+            var book = new Book
+            {
+                Id = bookDto.Id,
+                Isbn = bookDto.Isbn,
+                Title = bookDto.Title,
+                Year = bookDto.Year
+            };
             var isStateAdded = _repository.Create(book);
             var affectedRows = _dbContext.SaveChanges();
 
@@ -36,19 +45,38 @@
         }
 
         /// <summary>
-        /// Reads a <see cref="Book"/> based on the id.
+        /// Reads a <see cref="BookModel"/> based on the id.
         /// </summary>
         /// <param name="id">The id <see cref="Guid"/>.</param>
         /// <returns></returns>
-        public Book Read(Guid id) => _repository.Read(id);
+        public BookDto Read(Guid id)
+        {
+            var book = _repository.Read(id);
+            if (book is null)
+                return null;
+            return new BookDto
+            {
+                Id = book.Id,
+                Isbn = book.Isbn,
+                Title = book.Title,
+                Year = book.Year
+            };
+        }
 
         /// <summary>
         /// Updates book.
         /// </summary>
-        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <param name="bookDto">The book dto <see cref="BookDto"/>.</param>
         /// <returns></returns>
-        public bool Update(Book book)
+        public bool Update(BookDto bookDto)
         {
+            var book = new Book
+            {
+                Id = bookDto.Id,
+                Isbn = bookDto.Isbn,
+                Title = bookDto.Title,
+                Year = bookDto.Year
+            };
             var isStateUpdated = _repository.Update(book);
             var affectedRows = _dbContext.SaveChanges();
 

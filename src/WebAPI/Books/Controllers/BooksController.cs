@@ -1,7 +1,7 @@
 ﻿namespace WebAPI.Books.Controllers
 {
-    using Atlantis.Books;
-    using Atlantis.Books.Abstractions;
+    using Atlantis.Books.Business;
+    using Atlantis.Books.Dtos;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using static Microsoft.AspNetCore.Http.StatusCodes;
@@ -27,12 +27,12 @@
         /// <summary>
         /// Creates <see cref="Book"/>.
         /// </summary>
-        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <param name="dto">The dto <see cref="BookDto"/>.</param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Create(Book book)
+        public IActionResult Create(BookDto dto)
         {
-            var isCreated = _service.Create(book);
+            var isCreated = _service.Create(dto);
 
             return StatusCode(Status201Created, isCreated);
         }
@@ -45,20 +45,20 @@
         [HttpGet("{id:guid}")]
         public IActionResult Read(Guid id)
         {
-            var book = _service.Read(id);
+            var dto = _service.Read(id);
 
-            return Ok(book);
+            return Ok(dto);
         }
 
         /// <summary>
         /// Updates the book based on id <see cref="Guid"/>.
         /// </summary>
-        /// <param name="book">The book <see cref="Book"/>.</param>
+        /// <param name="dto">The dto <see cref="BookDto"/>.</param>
         /// <returns></returns>
         [HttpPut]
-        public IActionResult Update(Book book)
+        public IActionResult Update(BookDto dto)
         {
-            var isUpdated = _service.Update(book);
+            var isUpdated = _service.Update(dto);
             var message = isUpdated ? "Record updated successfully" : "Failed to update";
 
             return Ok(message);

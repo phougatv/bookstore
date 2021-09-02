@@ -1,6 +1,6 @@
-﻿namespace Atlantis.Books.Concretes
+﻿namespace Atlantis.Books.Persistence
 {
-    using Atlantis.Books.Abstractions;
+    using Atlantis.Books.Persistence.Pocos;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Linq;

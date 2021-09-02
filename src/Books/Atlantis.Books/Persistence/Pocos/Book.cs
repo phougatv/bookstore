@@ -1,12 +1,9 @@
-﻿namespace Atlantis.Books
+﻿namespace Atlantis.Books.Persistence.Pocos
 {
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    /// <summary>
-    /// Book class.
-    /// </summary>
-    public class Book
+    internal class Book
     {
         /// <summary>
         /// Id, the primary key in the Book table.

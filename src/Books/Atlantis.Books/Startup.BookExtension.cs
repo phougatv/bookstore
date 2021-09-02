@@ -1,7 +1,7 @@
 ﻿namespace Atlantis.Books
 {
-    using Atlantis.Books.Abstractions;
-    using Atlantis.Books.Concretes;
+    using Atlantis.Books.Business;
+    using Atlantis.Books.Persistence;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
 

@@ -1,4 +1,4 @@
-﻿namespace Atlantis.Books.Abstractions
+﻿namespace Atlantis.Books.Persistence
 {
     using System;
 
