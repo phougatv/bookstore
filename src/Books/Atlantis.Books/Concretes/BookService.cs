@@ -30,9 +30,9 @@
         public bool Create(Book book)
         {
             var isStateAdded = _repository.Create(book);
-            var stateEntries = _dbContext.SaveChanges();
+            var affectedRows = _dbContext.SaveChanges();
 
-            return isStateAdded && stateEntries == 1;   // Only 1 row should be created in single scope.
+            return isStateAdded && affectedRows == 1;   // Only 1 row should be created in single scope.
         }
 
         /// <summary>
@@ -50,9 +50,9 @@
         public bool Update(Book book)
         {
             var isStateUpdated = _repository.Update(book);
-            var stateEntries = _dbContext.SaveChanges();
+            var affectedRows = _dbContext.SaveChanges();
 
-            return isStateUpdated && stateEntries == 1;
+            return isStateUpdated && affectedRows == 1;
         }
 
         /// <summary>
@@ -63,9 +63,9 @@
         public bool Delete(Guid id)
         {
             var isStateDeleted = _repository.Delete(id);
-            var stateEntries = _dbContext.SaveChanges();
+            var affectedRows = _dbContext.SaveChanges();
 
-            return isStateDeleted && stateEntries == 1;
+            return isStateDeleted && affectedRows == 1;
         }
     }
 }
