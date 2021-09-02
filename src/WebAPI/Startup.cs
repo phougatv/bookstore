@@ -1,6 +1,7 @@
 namespace WebAPI
 {
     using Atlantis.Books;
+    using Atlantis.Shared.Automapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,7 @@ namespace WebAPI
         {
             services.AddMvc();
             services.AddControllers();
+            services.AddAutomapper();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();

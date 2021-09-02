@@ -3,6 +3,7 @@
     using Atlantis.Books.Dtos;
     using Atlantis.Books.Persistence;
     using Atlantis.Books.Persistence.Pocos;
+    using AutoMapper;
     using System;
 
     /// <summary>
@@ -12,16 +13,21 @@
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IBookRepository _repository;
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// Creates an instance of <see cref="BookService"/>.
         /// </summary>
         /// <param name="dbContext">The db context <see cref="ApplicationDbContext"/>.</param>
         /// <param name="repository">The repository <see cref="BookRepository"/>.</param>
-        public BookService(ApplicationDbContext dbContext, IBookRepository repository)
+        public BookService(
+            ApplicationDbContext dbContext,
+            IBookRepository repository,
+            IMapper mapper)
         {
             _dbContext = dbContext;
             _repository = repository;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -31,13 +37,7 @@
         /// <returns></returns>
         public bool Create(BookDto bookDto)
         {
-            var book = new Book
-            {
-                Id = bookDto.Id,
-                Isbn = bookDto.Isbn,
-                Title = bookDto.Title,
-                Year = bookDto.Year
-            };
+            var book = _mapper.Map<Book>(bookDto);
             var isStateAdded = _repository.Create(book);
             var affectedRows = _dbContext.SaveChanges();
 
@@ -52,15 +52,9 @@
         public BookDto Read(Guid id)
         {
             var book = _repository.Read(id);
-            if (book is null)
-                return null;
-            return new BookDto
-            {
-                Id = book.Id,
-                Isbn = book.Isbn,
-                Title = book.Title,
-                Year = book.Year
-            };
+            var dto = _mapper.Map<BookDto>(book);
+
+            return dto;
         }
 
         /// <summary>
@@ -70,13 +64,7 @@
         /// <returns></returns>
         public bool Update(BookDto bookDto)
         {
-            var book = new Book
-            {
-                Id = bookDto.Id,
-                Isbn = bookDto.Isbn,
-                Title = bookDto.Title,
-                Year = bookDto.Year
-            };
+            var book = _mapper.Map<Book>(bookDto);
             var isStateUpdated = _repository.Update(book);
             var affectedRows = _dbContext.SaveChanges();
 
