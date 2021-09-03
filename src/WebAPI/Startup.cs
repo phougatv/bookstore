@@ -17,12 +17,11 @@ namespace WebAPI
         {
             services.AddMvc();
             services.AddControllers();
-            services.AddCustomAutomapper();
+            services.AddAtlantisCore();
+
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
-
-            services.AddBookComponent();
         }
 
         /// <summary>

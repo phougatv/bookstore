@@ -12,7 +12,7 @@
         }
 
         /// <summary>
-        /// First removes pluralizing table name convention, then pass the model builder to the base method.
+        /// Removes pluralizing table name convention.
         /// </summary>
         /// <param name="modelBuilder">The model builder <see cref="ModelBuilder"/>.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)

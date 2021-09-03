@@ -8,7 +8,17 @@
 
     public static class BooksExtension
     {
-        public static IServiceCollection AddBookComponent(this IServiceCollection services)
+        public static IServiceCollection AddAtlantisCore(this IServiceCollection services)
+        {
+            services
+                .AddAtlantisAutomapper()
+                .AddAtlantisMsSql()
+                .AddAtlantisServices();
+            return services;
+        }
+
+
+        internal static IServiceCollection AddAtlantisMsSql(this IServiceCollection services)
         {
             services.AddDbContext<AtlantisDbContext>(optionsBuilder =>
             {
@@ -16,9 +26,16 @@
                 optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Atlantis.Books;Integrated Security=SSPI;Trusted_Connection=True");
             });
 
-            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IBookRepository, BookRepository>();
 
+            return services;
+        }
+
+
+        internal static IServiceCollection AddAtlantisServices(this IServiceCollection services)
+        {
+            services.AddScoped<IBookService, BookService>();
             return services;
         }
     }

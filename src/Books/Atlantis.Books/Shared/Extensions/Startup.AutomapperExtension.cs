@@ -10,7 +10,7 @@
     public static class Startup
     {
         #region Configure Services
-        public static IServiceCollection AddCustomAutomapper(this IServiceCollection services)
+        public static IServiceCollection AddAtlantisAutomapper(this IServiceCollection services)
         {
             var atlantisAssemblies = GetAtlantisAssemblies();
             var mapper = GetMapper(atlantisAssemblies);

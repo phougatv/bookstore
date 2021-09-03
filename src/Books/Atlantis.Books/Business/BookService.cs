@@ -12,7 +12,8 @@
     /// </summary>
     class BookService : IBookService
     {
-        private readonly AtlantisDbContext _dbContext;
+        //private readonly AtlantisDbContext _dbContext;
+        private readonly IUnitOfWork _uow;
         private readonly IBookRepository _repository;
         private readonly IMapper _mapper;
 
@@ -22,11 +23,13 @@
         /// <param name="dbContext">The db context <see cref="AtlantisDbContext"/>.</param>
         /// <param name="repository">The repository <see cref="BookRepository"/>.</param>
         public BookService(
-            AtlantisDbContext dbContext,
+            //AtlantisDbContext dbContext,
+            IUnitOfWork uow,
             IBookRepository repository,
             IMapper mapper)
         {
-            _dbContext = dbContext;
+            //_dbContext = dbContext;
+            _uow = uow;
             _repository = repository;
             _mapper = mapper;
         }
@@ -40,7 +43,8 @@
         {
             var book = _mapper.Map<Book>(bookDto);
             var isStateAdded = _repository.Create(book);
-            var affectedRows = _dbContext.SaveChanges();
+            var affectedRows = _uow.Commit();
+            //var affectedRows = _dbContext.SaveChanges();
 
             return isStateAdded && affectedRows == 1;   // Only 1 row should be created in single scope.
         }
@@ -67,7 +71,8 @@
         {
             var book = _mapper.Map<Book>(bookDto);
             var isStateUpdated = _repository.Update(book);
-            var affectedRows = _dbContext.SaveChanges();
+            var affectedRows = _uow.Commit();
+            //var affectedRows = _dbContext.SaveChanges();
 
             return isStateUpdated && affectedRows == 1;
         }
@@ -80,7 +85,8 @@
         public bool Delete(Guid id)
         {
             var isStateDeleted = _repository.Delete(id);
-            var affectedRows = _dbContext.SaveChanges();
+            var affectedRows = _uow.Commit();
+            //var affectedRows = _dbContext.SaveChanges();
 
             return isStateDeleted && affectedRows == 1;
         }
