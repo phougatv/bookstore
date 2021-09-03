@@ -11,17 +11,17 @@
     /// </summary>
     class BookService : IBookService
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly AtlantisDbContext _dbContext;
         private readonly IBookRepository _repository;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// Creates an instance of <see cref="BookService"/>.
         /// </summary>
-        /// <param name="dbContext">The db context <see cref="ApplicationDbContext"/>.</param>
+        /// <param name="dbContext">The db context <see cref="AtlantisDbContext"/>.</param>
         /// <param name="repository">The repository <see cref="BookRepository"/>.</param>
         public BookService(
-            ApplicationDbContext dbContext,
+            AtlantisDbContext dbContext,
             IBookRepository repository,
             IMapper mapper)
         {

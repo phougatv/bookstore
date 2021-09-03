@@ -10,13 +10,13 @@
     /// </summary>
     class BookRepository : IBookRepository
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly AtlantisDbContext _dbContext;
 
         /// <summary>
         /// Creates an instance of <see cref="BookRepository"/>.
         /// </summary>
-        /// <param name="dbContext">The db context <see cref="ApplicationDbContext"/>.</param>
-        public BookRepository(ApplicationDbContext dbContext)
+        /// <param name="dbContext">The db context <see cref="AtlantisDbContext"/>.</param>
+        public BookRepository(AtlantisDbContext dbContext)
         {
             _dbContext = dbContext;
         }

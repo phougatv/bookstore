@@ -3,9 +3,9 @@
     using Atlantis.Books.Persistence.Pocos;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationDbContext : DbContext
+    public class AtlantisDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContextOptions)
+        public AtlantisDbContext(DbContextOptions<AtlantisDbContext> dbContextOptions)
             : base(dbContextOptions)
         {
 
