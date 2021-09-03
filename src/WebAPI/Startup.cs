@@ -1,7 +1,6 @@
 namespace WebAPI
 {
-    using Atlantis.Books;
-    using Atlantis.Books.Common.Extensions;
+    using Atlantis.Books.Shared.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;

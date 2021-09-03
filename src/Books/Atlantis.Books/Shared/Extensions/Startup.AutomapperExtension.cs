@@ -1,4 +1,4 @@
-﻿namespace Atlantis.Books.Common.Extensions
+﻿namespace Atlantis.Books.Shared.Extensions
 {
     using AutoMapper;
     using Microsoft.Extensions.DependencyInjection;

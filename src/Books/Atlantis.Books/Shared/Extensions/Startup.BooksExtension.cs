@@ -1,4 +1,4 @@
-﻿namespace Atlantis.Books
+﻿namespace Atlantis.Books.Shared.Extensions
 {
     using Atlantis.Books.Business;
     using Atlantis.Books.Persistence;
