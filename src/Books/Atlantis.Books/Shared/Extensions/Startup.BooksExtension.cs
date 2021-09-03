@@ -2,6 +2,7 @@
 {
     using Atlantis.Books.Business;
     using Atlantis.Books.Persistence;
+    using Atlantis.Books.Persistence.Repositories;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
 

@@ -3,6 +3,7 @@
     using Atlantis.Books.Dtos;
     using Atlantis.Books.Persistence;
     using Atlantis.Books.Persistence.Pocos;
+    using Atlantis.Books.Persistence.Repositories;
     using AutoMapper;
     using System;
 

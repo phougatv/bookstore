@@ -1,4 +1,4 @@
-﻿namespace Atlantis.Books.Persistence
+﻿namespace Atlantis.Books.Persistence.Repositories
 {
     using Atlantis.Books.Persistence.Pocos;
     using Microsoft.EntityFrameworkCore;
