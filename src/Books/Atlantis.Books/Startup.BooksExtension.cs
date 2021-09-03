@@ -5,7 +5,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
 
-    public static class BookExtension
+    public static class BooksExtension
     {
         public static IServiceCollection AddBookComponent(this IServiceCollection services)
         {
