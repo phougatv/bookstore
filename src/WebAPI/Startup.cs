@@ -19,7 +19,6 @@ namespace WebAPI
             services.AddControllers();
             services.AddAtlantisCore();
 
-
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
         }

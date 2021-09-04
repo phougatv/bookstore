@@ -1,18 +1,12 @@
 ﻿namespace Atlantis.Books.Persistence.Pocos
 {
+    using Atlantis.Books.Persistence.Base;
     using System;
-    using System.ComponentModel.DataAnnotations;
 
-    internal class Book
+    public class Book : Entity<Guid>
     {
         /// <summary>
-        /// Id, the primary key in the Book table.
-        /// </summary>
-        [Key]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// The title
+        /// The title.
         /// </summary>
         public string Title { get; set; }
 
@@ -22,7 +16,7 @@
         public string Isbn { get; set; }
 
         /// <summary>
-        /// The release year of the book
+        /// The release year of the book.
         /// </summary>
         public int Year { get; set; }
     }
