@@ -49,7 +49,7 @@
         #endregion Public Methods
 
         #region Protected Abstract Methods
-        protected abstract TEntity InternalReadById(TId id);
+        protected virtual TEntity InternalReadById(TId id) => _dbContext.Set<TEntity>().Find(id);
         #endregion Protected Abstract Methods
     }
 }

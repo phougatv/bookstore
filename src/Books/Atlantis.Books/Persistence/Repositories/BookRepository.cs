@@ -16,7 +16,5 @@
         {
             _dbContext = dbContext;
         }
-
-        protected override Book InternalReadById(Guid id) => _dbContext.Set<Book>().Find(id);
     }
 }
