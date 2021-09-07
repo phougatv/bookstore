@@ -6,7 +6,7 @@
     interface IUnitOfWork
     {
         /// <summary>
-        /// Commits all the DB changes.
+        /// Commits all the entity entry changes.
         /// </summary>
         /// <returns></returns>
         int Commit();

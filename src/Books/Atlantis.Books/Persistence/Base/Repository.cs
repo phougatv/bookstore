@@ -1,9 +1,6 @@
 ﻿namespace Atlantis.Books.Persistence.Base
 {
-    using Microsoft.EntityFrameworkCore;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using Atlantis.Books.Shared.Extensions;
 
     internal abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : Entity<TId>
@@ -24,7 +21,7 @@
         bool IRepository<TEntity, TId>.Create(TEntity entity)
         {
             var entityEntry = _dbContext.Set<TEntity>().Add(entity);
-            return entityEntry.State == EntityState.Added;
+            return entityEntry.IsAdded();
         }
 
         TEntity IRepository<TEntity, TId>.Read(TId id) => InternalReadById(id);
@@ -32,9 +29,9 @@
         bool IRepository<TEntity, TId>.Update(TEntity entity)
         {
             var entityEntry = _dbContext.Attach(entity);
-            entityEntry.State = EntityState.Modified;
+            entityEntry.SetStateModified();
 
-            return entityEntry.State == EntityState.Modified;
+            return entityEntry.IsModified();
         }
 
         bool IRepository<TEntity, TId>.Delete(TId id)
@@ -44,7 +41,7 @@
                 return false;
 
             var entityEntry = _dbContext.Set<TEntity>().Remove(entity);
-            return entityEntry.State == EntityState.Deleted;
+            return entityEntry.IsDeleted();
         }
         #endregion Public Methods
 
