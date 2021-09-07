@@ -6,7 +6,7 @@
     /// Generic <see cref="IRepository{TEntity}"/>.
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IRepository<TEntity, TId>
+    internal interface IRepository<TEntity, TId>
         where TEntity : Entity<TId>
         where TId : struct
     {

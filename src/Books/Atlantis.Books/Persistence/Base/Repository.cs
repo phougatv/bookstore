@@ -2,9 +2,10 @@
 {
     using Microsoft.EntityFrameworkCore;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
-    public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
+    internal abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : Entity<TId>
         where TId : struct
     {
@@ -20,15 +21,15 @@
         }
 
         #region Public Methods
-        public bool Create(TEntity entity)
+        bool IRepository<TEntity, TId>.Create(TEntity entity)
         {
             var entityEntry = _dbContext.Set<TEntity>().Add(entity);
             return entityEntry.State == EntityState.Added;
         }
 
-        public TEntity Read(TId id) => InternalReadById(id);
+        TEntity IRepository<TEntity, TId>.Read(TId id) => InternalReadById(id);
 
-        public bool Update(TEntity entity)
+        bool IRepository<TEntity, TId>.Update(TEntity entity)
         {
             var entityEntry = _dbContext.Attach(entity);
             entityEntry.State = EntityState.Modified;
@@ -36,7 +37,7 @@
             return entityEntry.State == EntityState.Modified;
         }
 
-        public bool Delete(TId id)
+        bool IRepository<TEntity, TId>.Delete(TId id)
         {
             var entity = InternalReadById(id);
             if (entity == null)
@@ -47,8 +48,8 @@
         }
         #endregion Public Methods
 
-        #region Abstract Protected Methods
+        #region Protected Abstract Methods
         protected abstract TEntity InternalReadById(TId id);
-        #endregion Abstract Protected Methods
+        #endregion Protected Abstract Methods
     }
 }

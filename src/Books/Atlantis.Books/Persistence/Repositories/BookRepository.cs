@@ -7,7 +7,7 @@
     /// <summary>
     /// BookRepository class.
     /// </summary>
-    public class BookRepository : Repository<Book, Guid>, IBookRepository
+    internal class BookRepository : Repository<Book, Guid>, IBookRepository
     {
         private readonly AtlantisDbContext _dbContext;
 

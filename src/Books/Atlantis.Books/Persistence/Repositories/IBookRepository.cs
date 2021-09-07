@@ -7,7 +7,7 @@
     /// <summary>
     /// IBookRepository interface.
     /// </summary>
-    public interface IBookRepository : IRepository<Book, Guid>
+    internal interface IBookRepository : IRepository<Book, Guid>
     {
 
     }
