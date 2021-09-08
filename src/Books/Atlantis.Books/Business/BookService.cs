@@ -1,5 +1,6 @@
 ﻿namespace Atlantis.Books.Business
 {
+    using Atlantis.Books.Business.DomainModels;
     using Atlantis.Books.Dtos;
     using Atlantis.Books.Persistence;
     using Atlantis.Books.Persistence.Pocos;
@@ -38,7 +39,8 @@
         /// <returns></returns>
         public bool Create(BookDto bookDto)
         {
-            var book = _mapper.Map<Book>(bookDto);
+            var bookDomain = _mapper.Map<BookDomain>(bookDto);
+            var book = _mapper.Map<Book>(bookDomain);
             var isStateAdded = _repository.Create(book);
             var affectedRows = _uow.Commit();
 
@@ -53,9 +55,10 @@
         public BookDto Read(Guid id)
         {
             var book = _repository.Read(id);
-            var dto = _mapper.Map<BookDto>(book);
+            var bookDomain = _mapper.Map<BookDomain>(book);
+            var bookDto = _mapper.Map<BookDto>(bookDomain);
 
-            return dto;
+            return bookDto;
         }
 
         /// <summary>
@@ -65,7 +68,8 @@
         /// <returns></returns>
         public bool Update(BookDto bookDto)
         {
-            var book = _mapper.Map<Book>(bookDto);
+            var bookDomain = _mapper.Map<BookDomain>(bookDto);
+            var book = _mapper.Map<Book>(bookDomain);
             var isStateUpdated = _repository.Update(book);
             var affectedRows = _uow.Commit();
 

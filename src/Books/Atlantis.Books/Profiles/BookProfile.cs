@@ -1,5 +1,6 @@
 ﻿namespace Atlantis.Books.Profiles
 {
+    using Atlantis.Books.Business.DomainModels;
     using Atlantis.Books.Dtos;
     using Atlantis.Books.Persistence.Pocos;
     using AutoMapper;
@@ -11,7 +12,8 @@
     {
         public BookProfile()
         {
-            CreateMap<Book, BookDto>().ReverseMap();
+            CreateMap<BookDomain, BookDto>().ReverseMap();
+            CreateMap<Book, BookDomain>().ReverseMap();
         }
     }
 }
