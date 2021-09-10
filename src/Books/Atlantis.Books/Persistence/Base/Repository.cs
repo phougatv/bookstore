@@ -1,6 +1,7 @@
 ﻿namespace Atlantis.Books.Persistence.Base
 {
     using Atlantis.Books.Shared.Extensions;
+    using System;
 
     internal abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : Entity<TId>
@@ -20,6 +21,7 @@
         #region Public Methods
         bool IRepository<TEntity, TId>.Create(TEntity entity)
         {
+            entity.CreatedOn = DateTime.UtcNow;
             var entityEntry = _dbContext.Set<TEntity>().Add(entity);
             return entityEntry.IsAdded();
         }
@@ -28,8 +30,13 @@
 
         bool IRepository<TEntity, TId>.Update(TEntity entity)
         {
+            var internalEntity = InternalReadById(entity.Id);
+            entity.CreatedOn = internalEntity.CreatedOn;
+            entity.UpdatedOn = DateTime.UtcNow;
+            _dbContext.Entry(internalEntity).Detach();
+
             var entityEntry = _dbContext.Attach(entity);
-            entityEntry.SetStateModified();
+            entityEntry.Modify();
 
             return entityEntry.IsModified();
         }

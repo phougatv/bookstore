@@ -24,7 +24,13 @@
             return entityEntry.State == EntityState.Deleted;
         }
 
-        internal static void SetStateModified(this EntityEntry entityEntry)
+        internal static void Detach(this EntityEntry entityEntry)
+        {
+            ThrowArgumentNullExceptionIfEntityEntryIsNull(entityEntry, nameof(entityEntry));
+            entityEntry.State = EntityState.Detached;
+        }
+
+        internal static void Modify(this EntityEntry entityEntry)
         {
             ThrowArgumentNullExceptionIfEntityEntryIsNull(entityEntry, nameof(entityEntry));
             entityEntry.State = EntityState.Modified;
