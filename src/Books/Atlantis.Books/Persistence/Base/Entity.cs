@@ -16,6 +16,11 @@
         public TId Id { get; set; }
 
         /// <summary>
+        /// Is deleted.
+        /// </summary>
+        public bool IsDeleted { get; set; }
+
+        /// <summary>
         /// The created on.
         /// </summary>
         public DateTime? CreatedOn { get; set; }
