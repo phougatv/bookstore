@@ -44,8 +44,9 @@ namespace WebAPI
         /// </summary>
         /// <param name="app">The app <see cref="IApplicationBuilder"/>.</param>
         /// <param name="env">The env <see cref="IWebHostEnvironment"/>.</param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogInformation("ExceptionHandling: Configuring middleware...");
             if (env.IsDevelopment())
             {
                 app.UseExceptionHandler("/api/error/on-dev-env");
@@ -55,6 +56,7 @@ namespace WebAPI
             {
                 app.UseExceptionHandler("/api/error");
             }
+            logger.LogInformation("ExceptionHandling: Successfully configured middleware.");
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
