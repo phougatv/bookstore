@@ -27,7 +27,7 @@
         /// <summary>
         /// Creates <see cref="Book"/>.
         /// </summary>
-        /// <param name="dto">The dto <see cref="BookDto"/>.</param>
+        /// <param name="dto">The <paramref name="dto"/> <see cref="BookDto"/>.</param>
         /// <returns></returns>
         [HttpPost]
         public IActionResult Create(BookDto dto)
@@ -40,7 +40,7 @@
         /// <summary>
         /// Gets <see cref="Book"/> based on the id.
         /// </summary>
-        /// <param name="id">The id <see cref="Guid"/>.</param>
+        /// <param name="id">The <paramref name="id"/> <see cref="Guid"/>.</param>
         /// <returns></returns>
         [HttpGet("{id:guid}")]
         public IActionResult Read(Guid id)
@@ -53,7 +53,7 @@
         /// <summary>
         /// Updates the book based on id <see cref="Guid"/>.
         /// </summary>
-        /// <param name="dto">The dto <see cref="BookDto"/>.</param>
+        /// <param name="dto">The <paramref name="dto"/> <see cref="BookDto"/>.</param>
         /// <returns></returns>
         [HttpPut]
         public IActionResult Update(BookDto dto)
@@ -67,7 +67,7 @@
         /// <summary>
         /// Deletes the <see cref="Book"/> based on the id.
         /// </summary>
-        /// <param name="id">The id <see cref="Guid"/>.</param>
+        /// <param name="id">The <paramref name="id"/> <see cref="Guid"/>.</param>
         /// <returns></returns>
         [HttpDelete("{id:guid}")]
         public IActionResult Delete(Guid id)
