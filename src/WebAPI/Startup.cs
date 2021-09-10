@@ -3,11 +3,23 @@ namespace WebAPI
     using Atlantis.Books.Shared.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment WebHostEnvironment { get; }
+
+        public Startup(
+            IConfiguration configuration,
+            IWebHostEnvironment webHostEnvironment)
+        {
+            Configuration = configuration;
+            WebHostEnvironment = webHostEnvironment;
+        }
+
         /// <summary>
         /// This method gets called by the runtime. Use this method to add services to the container.
         /// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -17,7 +29,7 @@ namespace WebAPI
         {
             services.AddMvc();
             services.AddControllers();
-            services.AddAtlantisCore();
+            services.AddAtlantisCore(Configuration);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
