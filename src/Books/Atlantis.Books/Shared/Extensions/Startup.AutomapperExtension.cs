@@ -2,6 +2,7 @@
 {
     using AutoMapper;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -10,12 +11,15 @@
     public static class Startup
     {
         #region Configure Services
-        public static IServiceCollection AddAtlantisAutomapper(this IServiceCollection services)
+        public static IServiceCollection AddAtlantisAutomapper(this IServiceCollection services, ILogger logger)
         {
+            logger.LogInformation("Atlantis Automapper: Configuring services...");
+
             var atlantisAssemblies = GetAtlantisAssemblies();
             var mapper = GetMapper(atlantisAssemblies);
-
             services.AddSingleton(mapper);
+
+            logger.LogInformation("Atlantis Automapper: Successfully configured services.");
 
             return services;
         }

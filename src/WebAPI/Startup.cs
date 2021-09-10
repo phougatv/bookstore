@@ -6,18 +6,22 @@ namespace WebAPI
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Logging;
 
     public class Startup
     {
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment WebHostEnvironment { get; }
+        public ILogger<Startup> Logger { get; }
 
         public Startup(
             IConfiguration configuration,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            ILogger<Startup> logger)
         {
             Configuration = configuration;
             WebHostEnvironment = webHostEnvironment;
+            Logger = logger;
         }
 
         /// <summary>
@@ -29,7 +33,7 @@ namespace WebAPI
         {
             services.AddMvc();
             services.AddControllers();
-            services.AddAtlantisCore(Configuration);
+            services.AddAtlantis(Configuration, Logger);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
