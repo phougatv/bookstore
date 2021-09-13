@@ -36,14 +36,7 @@
         /// </summary>
         /// <param name="id">The <typeparamref name="TId"/>.</param>
         /// <returns></returns>
-        TEntity IRepository<TEntity, TId>.Read(TId id)
-        {
-            var entity = InternalReadById(id);
-            if (entity == null || entity.IsDeleted)
-                return null;
-
-            return entity;
-        }
+        TEntity IRepository<TEntity, TId>.Read(TId id) => InternalReadWhenDeleteHardIsSet(id);
 
         /// <summary>
         /// Updates an entity.
@@ -57,7 +50,7 @@
         /// </summary>
         /// <param name="id">The <typeparamref name="TId"/>.</param>
         /// <returns></returns>
-        bool IRepository<TEntity, TId>.Delete(TId id) => InternalDeleteSoft(id);
+        bool IRepository<TEntity, TId>.Delete(TId id) => InternalDeleteHard(id);
         #endregion Public Methods
 
         #region Protected Abstract Methods
@@ -67,6 +60,34 @@
         /// <param name="id">The <typeparamref name="TId"/>.</param>
         /// <returns></returns>
         protected virtual TEntity InternalReadById(TId id) => _dbContext.Set<TEntity>().Find(id);
+
+        /// <summary>
+        /// Read using this method when record is permanently deleted.
+        /// </summary>
+        /// <param name="id">The <typeparamref name="TId"/>.</param>
+        /// <returns></returns>
+        protected virtual TEntity InternalReadWhenDeleteHardIsSet(TId id)
+        {
+            var entity = InternalReadById(id);
+            if (entity == null)
+                return null;
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Read using this method when record soft delete is used to mark the record deleted.
+        /// </summary>
+        /// <param name="id">The <typeparamref name="TId"/>.</param>
+        /// <returns></returns>
+        protected virtual TEntity InternalReadWhenDeleteSoftIsSet(TId id)
+        {
+            var entity = InternalReadById(id);
+            if (entity == null || entity.IsDeleted)
+                return null;
+
+            return entity;
+        }
 
         /// <summary>
         /// Updates an entity by maintaining the CreatedOn and IsDeleted values and setting UpdateOn to DateTime.UtcNow.
