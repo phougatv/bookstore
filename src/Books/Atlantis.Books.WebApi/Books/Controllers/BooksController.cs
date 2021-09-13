@@ -1,4 +1,4 @@
-﻿namespace WebAPI.Books.Controllers
+﻿namespace Atlantis.Books.WebApi.Books.Controllers
 {
     using Atlantis.Books.Business;
     using Atlantis.Books.Dtos;

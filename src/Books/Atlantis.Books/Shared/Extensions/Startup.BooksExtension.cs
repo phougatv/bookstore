@@ -25,7 +25,7 @@
             services.AddDbContext<AtlantisDbContext>(optionsBuilder =>
             {
                 // Install-Package Microsoft.EntityFrameworkCore.SqlServer for this extension method
-                optionsBuilder.UseSqlServer(configuration.GetSection("Atlantis:ConnectionString").Value);
+                optionsBuilder.UseSqlServer(configuration.GetSection("Atlantis:DataAccess:ConnectionString").Value);
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

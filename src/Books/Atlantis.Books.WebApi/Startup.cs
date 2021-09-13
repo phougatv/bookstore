@@ -1,4 +1,4 @@
-namespace WebAPI
+namespace Atlantis.Books.WebApi
 {
     using Atlantis.Books.Shared.Extensions;
     using Microsoft.AspNetCore.Builder;

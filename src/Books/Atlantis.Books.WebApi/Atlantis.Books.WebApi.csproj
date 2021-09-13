@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>3b77f21b-4b7e-4ff0-aa1d-30730a0267d2</UserSecretsId>
+    <UserSecretsId>3a4e716a-1c32-4c6c-9442-a8f9a7aa61df</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Books\Atlantis.Books\Atlantis.Books.csproj" />
+    <ProjectReference Include="..\Atlantis.Books\Atlantis.Books.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Atlantis.WebAPI.Errors
+﻿namespace Atlantis.Books.WebApi.Errors
 {
     using Microsoft.AspNetCore.Diagnostics;
     using Microsoft.AspNetCore.Hosting;

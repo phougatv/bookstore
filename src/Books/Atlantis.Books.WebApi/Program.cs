@@ -1,4 +1,4 @@
-namespace WebAPI
+namespace Atlantis.Books.WebApi
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -81,7 +81,7 @@ namespace WebAPI
                 .AddJsonFile("appsettings.json", true, true)
                 .AddJsonFile($"appsettings.{environment}.json", true, true)
 #if DEBUG
-                .AddJsonFile("secrets.json")
+                //.AddJsonFile("secrets.json")
 #endif
                 .Build();
         #endregion Private Static Methods
