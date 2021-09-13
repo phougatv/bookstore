@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{FBD664
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlantis.Orders.WebApi", "src\Orders\Atlantis.Orders.WebApi\Atlantis.Orders.WebApi.csproj", "{E562835C-BDED-4FEF-89FD-D4514ACAC08E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlantis.Orders", "src\Orders\Atlantis.Orders\Atlantis.Orders.csproj", "{B22E489F-6450-4A7C-8343-15A44511873B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{E562835C-BDED-4FEF-89FD-D4514ACAC08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E562835C-BDED-4FEF-89FD-D4514ACAC08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E562835C-BDED-4FEF-89FD-D4514ACAC08E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B22E489F-6450-4A7C-8343-15A44511873B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B22E489F-6450-4A7C-8343-15A44511873B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B22E489F-6450-4A7C-8343-15A44511873B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B22E489F-6450-4A7C-8343-15A44511873B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{F125F6FE-8C57-4F5A-9E58-E2A7EF4FDF84} = {7CCF61FB-3E1B-467E-8C2B-8EDFABB68C20}
 		{FBD664D4-594D-4291-9A2C-FFDDADF086C0} = {5A27BE39-B5BF-4482-9404-C86573C63136}
 		{E562835C-BDED-4FEF-89FD-D4514ACAC08E} = {FBD664D4-594D-4291-9A2C-FFDDADF086C0}
+		{B22E489F-6450-4A7C-8343-15A44511873B} = {FBD664D4-594D-4291-9A2C-FFDDADF086C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59BE38F4-A7E2-4FA5-A18B-0A20C13EC963}
